@@ -38,8 +38,8 @@ Télécharger et exécuter le script
 
 Le script est en deux parties distinctes :
 
-* une partie est à insérer dans le `<head>` du document : detect-head.js (ou minifié : detect-head.min.js)
+* une partie est à insérer dans le `<head>` du document : `detect-head.js` (ou minifié : `detect-head.min.js`)
 * une partie est à insérer dans le corps de page, juste avant `</body>` :
-    * detect-body-with-notifications.js (version avec bandeaux de notifications)
-    * detect-body-no-notifications.js (version sans bandeaux)
-    * detect-body.min.js (version minifiée sans bandeaux)
+    * `detect-body-with-notifications.js` (version avec bandeaux de notifications, pour tests en développement)
+    * `detect-body-no-notifications.js` (version sans bandeaux)
+    * `detect-body.min.js` (version minifiée sans bandeaux)
