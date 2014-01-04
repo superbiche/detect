@@ -1,7 +1,9 @@
 detect
 ======
 
-Combibaison de 3 tests pour chargement conditionnel de ressources (largeur de fenêtre, densité de pixels et connectivité réseau)
+Combinaison de 3 tests pour chargement conditionnel de ressources (largeur de fenêtre, densité de pixels et connectivité réseau)
+
+Page de démo  : www.kiwi.gg/detect
 
 Principe général
 ----------------
