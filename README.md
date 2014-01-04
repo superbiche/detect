@@ -1,9 +1,12 @@
 detect
 ======
 
-Combinaison de 3 tests pour chargement conditionnel de ressources (largeur de fenêtre, densité de pixels et connectivité réseau).
+Combinaison de 3 tests pour chargement conditionnel de ressources :
+* largeur de fenêtre (innerWidth)
+* densité de pixels (devicePixelRatio)
+* et connectivité réseau (2G, edge, 3G, Wi-fi, etc.).
 
-Le but étant de demeurer le plus simple possible à mettre en oeuvre, même si l'outil n'a pas vocation à être parfait.
+Le but étant de demeurer concis le plus simple possible à mettre en oeuvre, même si l'outil n'a pas vocation à être parfait.
 
 Page de démo  : www.kiwi.gg/detect
 
@@ -27,6 +30,8 @@ Compatibilité (janvier 2014)
 * OK sur mobile : Android 4, IE10, Opera mobile 16, Blackberry 10, Chrome 31, Firefox 25
 * PAS OK sur : Safari (bureau + mobile), Opera mini
 * Tableau de support de Navigation Timing sur [Caniuse.com](http://caniuse.com/#feat=nav-timing)
+
+Si le périphérique n'est pas compatible, seules les images de base ("small") sont chargées, donc tout demeure fonctionnel, même sans JavaScript.
 
 Télécharger et exécuter le script
 ---------------------------------
