@@ -1,0 +1,115 @@
+<!doctype html>
+<!--[if lte IE 6]> <html class="no-js ie6 ie67 ie678" lang="en"> <![endif]-->
+<!--[if lte IE 7]> <html class="no-js ie7 ie67 ie678" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js ie8 ie678" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<title>Responsive image detection</title>
+	<script>
+		// Timing detection part 1 (goes to <head>)
+		var perf = window.performance;
+		var start = perf.timing.requestStart; // just before page is requested
+		var end = perf.timing.responseStart; // first byte received
+		var total_time = end - start;
+	</script>
+	<meta name="viewport" content="initial-scale=1.0, width=device-width">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+<body>
+
+	<h1>Responsive image detection</h1>
+
+	<div id="connexion"></div>
+	<div id="pxratio"></div>
+	<div id="viewport"></div>
+	<div id="bingo"><p class="deco bad">Image chargée : 300px</p></div>
+	
+	<p>
+		<img src="img/small/logo.png" alt="logo Alsacreations" width="300" height="82">
+	</p>
+	<p>Ci-dessus devrait apparaître un logo Alsacreations.com déterminé selon la densité de pixels (retina), la largeur d'écran et la connectivité au réseau du périphérique :</p>
+	<ul>
+		<li>Si la connexion internet est mauvaise, le petit logo de 300px est chargé</li>
+		<li>Si la connexion internet est bonne <b>et</b> (si le pixel-ratio est au-moins de 2 <b>ou</b> si la largeur de fenêtre est au-moins de 640px), alors le logo de 600px remplace le petit</li>
+	</ul>
+	
+	<h2>Principe général</h2>
+	<ul>
+		<li>Test de HTML5 <a href="https://developer.mozilla.org/en-US/docs/Navigation_timing">Navigation Timing API</a>, le code JS est fortement inspiré d'une conf de <a href="http://mattandrews.info/talks/port80-2013/#/33">Matt Andrews</a>.</li>
+		<li>Test de Pixel-ratio en JavaScript</li>
+		<li>Test de window.innerWidth en JavaScript</li>
+		<li>Si l'un des tests échoue, seule la petite image (300px) est chargée</li>
+	</ul>
+
+	<p><strong>NOTE :</strong> il n'y a pas de détection de redimensionnement de fenêtre, il faudra rafraîchir la page pour observer les modifications.</p>
+
+	<p><strong>NOTE 2 :</strong> ce script n'est certainement pas exempt de bugs ou d'imprécisions. Utilisez-le à vos risques et périls</p>
+
+	<h2>Compatibilité (janvier 2014)</h2>
+	<ul>
+		<li>OK sur bureau : IE9, Firefox 7, Chrome 6, Opera 15</li>
+		<li>OK sur mobile : Android 4, IE10, Opera mobile 16, Blackberry 10, Chrome 31, Firefox 25</li>
+		<li>PAS OK sur : Safari (bureau + mobile), Opera mini</li>
+		<li>Tableau de <a href="http://caniuse.com/#feat=nav-timing">support de Navigation Timing</a> sur Caniuse.com</li>
+	</ul>
+
+	<h2>Télécharger et exécuter le script</h2>
+	<p>Le script est en deux parties distinctes :</p>
+	<ol>
+		<li>une partie est à insérer dans le &lt;head&gt; du document : <a href="detect-head.js">detect-head.js</a> (ou minifié : <a href="detect-head.min.js">detect-head.min.js</a>)</li>
+		<li>une partie est à insérer dans le corps de page, juste avant &lt;/body&gt; : 
+			<ul>
+				<li><a href="detect-body-with-notifications.js">detect-body-with-notifications.js</a> (version avec bandeaux de notifications)</li>
+				<li><a href="detect-body-no-notifications.js">detect-body-no-notifications.js</a> (version sans bandeaux)</li>
+				<li><a href="detect-body.min.js">detect-body.min.js</a> (version minifiée sans bandeaux)</li>
+			</ul>
+	</ol>
+
+
+<script>
+// Timing detection part 2 (needs other part in to <head>)
+if (perf) {
+	if (total_time <= 700 && total_time > 1) {
+		document.getElementById('connexion').innerHTML = '<p class="deco good">Votre connexion est bonne (accès en : '+total_time+'ms)</p>';
+
+		// now pixel-ratio detecting
+		var pxr = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
+		pxr=pxr.toFixed(2);
+
+		// ... and screen width detect
+		var w = window.innerWidth;
+
+		document.getElementById('pxratio').innerHTML = '<p class="deco">pixel-ratio : '+pxr+'</p>';
+		document.getElementById('viewport').innerHTML = '<p class="deco">largeur de fenêtre : '+w+'px</p>';
+
+		if (pxr >= 2 | w >= 640) {
+			// Everything OK ? Go Go Go !
+				document.getElementById('bingo').innerHTML = '<p class="deco good">Image chargée : 600px ! YAY </p>';
+				good();
+		}
+	} else if (total_time > 700 | total_time < 1) {
+		// when bad connexion
+		document.getElementById('connexion').innerHTML = '<p class="deco bad">Votre connexion est mauvaise (accès en : '+total_time+'ms)</p>';
+		// when bug
+		if (total_time < 1) {document.getElementById('connexion').innerHTML = '<p class="deco bad">Votre connexion semble faussée (accès en : '+total_time+'ms)</p>';}
+	}
+} else {
+	// when API not supported
+	document.getElementById('connexion').innerHTML = '<p class="deco bad">API Navigation Timing non supportée</p>';
+}
+
+function good() {
+	var imgs = document.getElementsByTagName("img");
+	for(var index in imgs) {
+		var src = imgs[index].src;
+		if(src != undefined)
+		imgs[index].src = src.replace("small", "big");
+	}
+}
+</script>
+
+
+</body>
+</html>
