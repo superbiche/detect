@@ -1,6 +1,6 @@
 // Timing detection part 2 (needs other part in to <head>)
 if (perf) {
-	if (total_time <= 700 && total_time > 1) {
+	if (total_time <= 700) {
 		// now pixel-ratio detecting
 		var pxr = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
 		pxr=pxr.toFixed(2);

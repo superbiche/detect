@@ -1,6 +1,6 @@
 // Timing detection part 2 (needs other part in to <head>)
 if (perf) {
-	if (total_time <= 700 && total_time > 1) {
+	if (total_time <= 700) {
 		document.getElementById('connexion').innerHTML = '<p class="deco good">Votre connexion est bonne (accès en : '+total_time+'ms)</p>';
 
 		// now pixel-ratio detecting
@@ -18,7 +18,7 @@ if (perf) {
 				document.getElementById('bingo').innerHTML = '<p class="deco good">Image chargée : 600px ! YAY </p>';
 				good();
 		}
-	} else if (total_time > 700 | total_time < 1) {
+	} else if (total_time > 700) {
 		// when bad connexion
 		document.getElementById('connexion').innerHTML = '<p class="deco bad">Votre connexion est mauvaise (accès en : '+total_time+'ms)</p>';
 		// when bug
