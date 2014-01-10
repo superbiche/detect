@@ -13,7 +13,7 @@ if (perf) {
 		document.getElementById('pxratio').innerHTML = '<p class="deco">pixel-ratio : '+pxr+'</p>';
 		document.getElementById('viewport').innerHTML = '<p class="deco">largeur de fenêtre : '+w+'px</p>';
 
-		if (pxr >= 2 | w >= 640) {
+		if (pxr > 1 | w >= 640) {
 			// Everything OK ? Go Go Go !
 				document.getElementById('bingo').innerHTML = '<p class="deco good">Image chargée : 600px ! YAY </p>';
 				good();

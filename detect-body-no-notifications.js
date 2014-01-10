@@ -7,7 +7,7 @@ if (perf) {
 		// ... and screen width detect
 		var w = window.innerWidth;
 
-		if (pxr >= 2 | w >= 640) {
+		if (pxr > 1 | w >= 640) {
 			// Everything OK ? Go Go Go !
 				good();
 		}
