@@ -1,0 +1,20 @@
+{
+  "name": "detect",
+  "version": "0.1",
+  "homepage": "http://kiwi.gg/detect",
+  "authors": [
+    "Raphaël GOETTER, Alsacreations"
+  ],
+  "description": "detect is a 3 steps (bandwidth + pixel-ratio + device-width) detection for responsive and mobile first resources.",
+  "main": "detect-body.min.js",
+  "keywords": [
+    "responsive", "rwd", "detection", "mobile", "images", "mobile-first", "bandwidth"
+  ],
+  "license": "WTFPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "README.md"
+  ]
+}
