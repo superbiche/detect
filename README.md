@@ -8,6 +8,10 @@ Combinaison de 3 tests pour chargement conditionnel de ressources :
 
 Le but étant de demeurer concis le plus simple possible à mettre en oeuvre, même si l'outil n'a pas vocation à être parfait.
 
+## Formule générale 
+
+_Si la connexion internet est bonne **et** (si le pixel-ratio est supérieur à 1 **ou** si la largeur de fenêtre est au-moins de 640px), alors le logo de 600px remplace le petit_
+
 Page de démo  : www.kiwi.gg/detect
 
 Principe général
