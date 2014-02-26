@@ -4,10 +4,8 @@ if (perf) {
 		// now pixel-ratio detecting
 		var pxr = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
 		pxr=pxr.toFixed(2);
-		// ... and screen width detect
-		var w = window.innerWidth;
 
-		if (pxr > 1 | w >= 640) {
+		if (pxr > 1) {
 			// Everything OK ? Go Go Go !
 				good();
 		}

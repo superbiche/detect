@@ -7,15 +7,11 @@ if (perf) {
 		var pxr = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
 		pxr=pxr.toFixed(2);
 
-		// ... and screen width detect
-		var w = window.innerWidth;
-
 		document.getElementById('pxratio').innerHTML = '<p class="deco">pixel-ratio : '+pxr+'</p>';
-		document.getElementById('viewport').innerHTML = '<p class="deco">largeur de fenêtre : '+w+'px</p>';
 
-		if (pxr > 1 | w >= 640) {
+		if (pxr > 1) {
 			// Everything OK ? Go Go Go !
-				document.getElementById('bingo').innerHTML = '<p class="deco good">Image chargée : 600px ! YAY </p>';
+				document.getElementById('bingo').innerHTML = '<p class="deco good">Image chargée : Haute Déf (600px)</p>';
 				good();
 		}
 	} else if (total_time > 700) {
