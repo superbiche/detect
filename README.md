@@ -11,4 +11,8 @@ _Si la connexion internet est bonne **et** si le pixel-ratio est supérieur à 1
 
 www.kiwi.gg/detect
 
+## Install
+
+`bower install detect`
+
 
