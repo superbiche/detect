@@ -33,7 +33,7 @@ Compatibilité (février 2014)
 * PAS OK sur : Safari (bureau + mobile), Opera mini
 * Tableau de support de Navigation Timing sur [Caniuse.com](http://caniuse.com/#feat=nav-timing)
 
-Si le périphérique n'est pas compatible, seules les images de base ("small") sont chargées, donc tout demeure fonctionnel, même sans JavaScript.
+Si le périphérique n'est pas compatible, seules les images de base ("small") sont chargées, donc tout demeure fonctionnel et accessible, même sans JavaScript.
 
 Télécharger et exécuter le script
 ---------------------------------
