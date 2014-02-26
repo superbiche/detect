@@ -14,7 +14,7 @@ _Si la connexion internet est bonne **et** (si le pixel-ratio est supérieur à 
 
 Page de démo  : www.kiwi.gg/detect
 
-Principe général
+Principe appliquée
 ----------------
 
 * Test de HTML5 [Navigation Timing API](https://developer.mozilla.org/en-US/docs/Navigation_timing), le code JS est fortement inspiré d'une conf de [Matt Andrews](http://mattandrews.info/talks/port80-2013/#/33).
