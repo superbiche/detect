@@ -1,8 +1,7 @@
 detect
 ======
 
-Combinaison de 3 tests pour chargement conditionnel de ressources :
-* largeur de fenêtre (innerWidth)
+Combinaison de 2 tests pour chargement conditionnel de ressources :
 * densité de pixels (devicePixelRatio)
 * et connectivité réseau (2G, edge, 3G, Wi-fi, etc.).
 
@@ -10,7 +9,7 @@ Le but étant de demeurer concis le plus simple possible à mettre en oeuvre, m�
 
 ## Formule générale 
 
-_Si la connexion internet est bonne **et** (si le pixel-ratio est supérieur à 1 **ou** si la largeur de fenêtre est au-moins de 640px), alors le logo de 600px remplace le petit_
+_Si la connexion internet est bonne **et** si le pixel-ratio est supérieur à 1, alors le logo de 600px remplace le petit_
 
 Page de démo  : www.kiwi.gg/detect
 
@@ -19,7 +18,6 @@ Principe appliquée
 
 * Test de HTML5 [Navigation Timing API](https://developer.mozilla.org/en-US/docs/Navigation_timing), le code JS est fortement inspiré d'une conf de [Matt Andrews](http://mattandrews.info/talks/port80-2013/#/33).
 * Test de Pixel-ratio en JavaScript
-* Test de window.innerWidth en JavaScript
 
 Si l'un des tests échoue, seules les petites images (celles qui contiennent "small" dans leur chemin) sont chargées, sinon, elles sont remplacées par les images contenant "big" dans leur chemin.
 
@@ -27,7 +25,7 @@ Si l'un des tests échoue, seules les petites images (celles qui contiennent "sm
 
 **NOTE 2 :** ce script n'est certainement pas exempt de bugs ou d'imprécisions. Utilisez-le à vos risques et périls
 
-Compatibilité (janvier 2014)
+Compatibilité (février 2014)
 ----------------------------
 
 * OK sur bureau : IE9, Firefox 7, Chrome 6, Opera 15
@@ -42,8 +40,8 @@ Télécharger et exécuter le script
 
 Le script est en deux parties distinctes :
 
-* une partie est à insérer dans le `<head>` du document : `detect-head.js` (ou minifié : `detect-head.min.js`)
+* une partie est à insérer dans le `<head>` du document : `detect-head.js` (ou minifié : `min/detect-head.min.js`)
 * une partie est à insérer dans le corps de page, juste avant `</body>` :
     * `detect-body-with-notifications.js` (version avec bandeaux de notifications, pour tests en développement)
-    * `detect-body-no-notifications.js` (version sans bandeaux)
-    * `detect-body.min.js` (version minifiée sans bandeaux)
+    * `detect-body-no-notifications.js` (version sans notifs)
+    * `min/detect-body.min.js` (version minifiée sans notifs)
