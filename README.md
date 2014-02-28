@@ -19,7 +19,8 @@ www.kiwi.gg/detect
 
 **Pas OK** sur : 
 * Safari (bureau + mobile), 
-* * Opera mini, 
-* * Android <3
+* Opera mini, 
+* Android <3
+* IE <10
 
 
