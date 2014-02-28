@@ -1,11 +1,8 @@
 // Timing detection part 2 (needs other part in to <head>)
 if (perf) {
 	if (total_time <= 700) {
-		// now pixel-ratio detecting
-		var pxr = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
-		pxr=pxr.toFixed(2);
-
-		if (pxr > 1) {
+		// now pixel density detecting
+		if (window.matchMedia("(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)").matches) {
 			// Everything OK ? Go Go Go !
 				good();
 		}
