@@ -15,4 +15,11 @@ www.kiwi.gg/detect
 
 `bower install detect`
 
+## Compatibilité (février 2014)
+
+**Pas OK** sur : 
+* Safari (bureau + mobile), 
+* * Opera mini, 
+* * Android <3
+
 
