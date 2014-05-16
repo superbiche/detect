@@ -1,11 +1,10 @@
 /* Deco */
-@import url(http://knacss.com/css/knacss.css);
     body {margin:0; padding:10px 1%; background:#fefdf4;
-      font-size: 1.6em;
+      font-size: 1em;
       font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;}
-    h1 {margin-top: 20px; margin-bottom: 0px; font-size:4rem; 
+    h1 {margin-top: 20px; margin-bottom: 0px; font-size:3rem; 
       color: #345; text-shadow: 1px 1px 1px #fff;}
-    h2 {margin-bottom: 2rem; color: #6B9A49; text-shadow: 1px 1px 1px #fff; font-size:3rem}
+    h2 {margin-bottom: 1.8rem; color: #6B9A49; text-shadow: 1px 1px 1px #fff; font-size:2rem}
 
     @font-face {
         font-family: 'kiwi';
@@ -54,4 +53,16 @@ img {
 [id=bingo] .bad {
   background: none;
   color: Maroon;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  [id=pxratio] {padding: .5em;   margin: 0 0 1px;   color: #fff;
+  background: ForestGreen;}
+  [id=pxratio]:before {content : "Densité de pixel >=2"}
+}
+
+@media (-webkit-max-device-pixel-ratio: 1.9), (max-resolution: 191dpi), (max-resolution: 1.9dppx) {
+  [id=pxratio] {padding: .5em;   margin: 0 0 1px;   color: #fff;
+  background: Maroon;}
+  [id=pxratio]:before {content : "Densité de pixel <2"}
 }

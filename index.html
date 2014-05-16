@@ -22,10 +22,10 @@
 <body>
 
 	<h1>Chargement conditionnel</h1>
+	<h2>Test : densité px + connexion</h2>
 
 	<div id="connexion"></div>
 	<div id="pxratio"></div>
-	<div id="viewport"></div>
 	<div id="bingo"><p class="deco bad">Image chargée : basse déf (300px)</p></div>
 	
 	<p>
@@ -40,7 +40,7 @@
 	<h2>Principe général</h2>
 	<ul>
 		<li>Test de HTML5 <a href="https://developer.mozilla.org/en-US/docs/Navigation_timing">Navigation Timing API</a>, le code JS est fortement inspiré d'une conf de <a href="http://mattandrews.info/talks/port80-2013/#/33">Matt Andrews</a>.</li>
-		<li>Test de Pixel-ratio en JavaScript</li>
+		<li>Test de densité de pixel en JavaScript via window.matchMedia()</li>
 		<li>Si l'un des tests échoue, seule la petite image (300px) est chargée</li>
 	</ul>
 
@@ -48,16 +48,16 @@
 
 	<p><strong>NOTE 2 :</strong> ce script n'est certainement pas exempt de bugs ou d'imprécisions. Utilisez-le à vos risques et périls</p>
 
-	<h2>Compatibilité (février 2014)</h2>
+	<h2>Compatibilité (mai 2014)</h2>
 	<ul>
-		<li>OK sur bureau : IE9, Firefox 7, Chrome 6, Opera 15</li>
-		<li>OK sur mobile : Android 4, IE10, Opera mobile 16, Blackberry 10, Chrome 31, Firefox 25</li>
-		<li>PAS OK sur : Safari (bureau + mobile), Opera mini</li>
+		<li>PAS OK sur : Safari (bureau + mobile), Opera mini, Android <3</li>
 		<li>Tableau de <a href="http://caniuse.com/#feat=nav-timing">support de Navigation Timing</a> sur Caniuse.com</li>
 	</ul>
 
 	<div><a style="display: block; margin-top: 2rem; text-decoration: none; color: #fff; background: slategray; padding: 1em; text-shadow: none" href="https://github.com/raphaelgoetter/detect">Télécharger et exécuter le script via GitHub</a></div>
 	<p>...ou avec <code>bower install detect</code></p>
+
+	<div><a style="display: block; margin-top: 2rem; text-decoration: none; color: #fff; background: slategray; padding: 1em; text-shadow: none" href="http://kiwi.gg/detect2">Voir la version incluant un test de largeur de fenêtre</a></div>
 
 
 <script>
@@ -66,13 +66,8 @@ if (perf) {
 	if (total_time <= 700) {
 		document.getElementById('connexion').innerHTML = '<p class="deco good">Votre connexion est bonne (accès en : '+total_time+'ms)</p>';
 
-		// now pixel-ratio detecting
-		var pxr = window.devicePixelRatio || window.screen.availWidth / document.documentElement.clientWidth;
-		pxr=pxr.toFixed(2);
-
-		document.getElementById('pxratio').innerHTML = '<p class="deco">pixel-ratio : '+pxr+'</p>';
-
-		if (pxr > 1) {
+		// now pixel density detecting
+		if (window.matchMedia("(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)").matches) {
 			// Everything OK ? Go Go Go !
 				document.getElementById('bingo').innerHTML = '<p class="deco good">Image chargée : Haute Déf (600px)</p>';
 				good();
